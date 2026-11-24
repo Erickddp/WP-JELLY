@@ -85,15 +85,26 @@ Cuenta el viaje completo: noche de campamento → amanecer en el agua → desayu
 - **Visual:** un corazón de cristal con un girasol adentro, como el collar.
 - **Animación:** el girasol florece pétalo por pétalo con el scroll; el corazón brilla al completarse.
 - **Texto:** "Que todo lo que llegue sea mejor de lo que buscas, / dure más de lo que esperas / y te haga más feliz de lo que pudiste imaginar."
-  (y opcional, pequeño: "Tu regalo de verdad te espera 🎁")
+  Pequeño, debajo: "El que tienes en tus manos." (ella escanea el NFC con el collar enfrente)
 - **Luz:** dorado (el girasol es el sol del día).
 
-### 8. Final — la vela
-- **Visual:** todo se oscurece; solo queda una vela encendida (la misma llama del inicio: cerramos el círculo).
-- **Texto:** "Feliz cumpleaños." / "Te quiero, boo." / firma: "Tu Pokie".
-- **Interacción:** "Pide un deseo y sopla la vela" → botón (o soplar al micrófono, opcional).
-  Al soplar: la llama se apaga con humito, pausa de 1 s, y luego confeti cálido + corazones + "🤍".
-- **Luz:** noche → explosión de luz.
+### 8. Final — la vela y el deseo (el momento estrella)
+Todo se oscurece; queda una sola vela (la misma llama del inicio: se cierra el círculo). La música baja.
+1. **Vela realista** (canvas): llama con parpadeo orgánico (ruido, no un loop), núcleo azul, halo cálido
+   que ilumina el texto alrededor, la cera brilla bajo la llama.
+2. "Feliz cumpleaños, Jelly." → "Pide un deseo."
+3. **El deseo:** campo opcional "Escríbelo… o solo piénsalo". **No se guarda en ningún lado** —
+   texto en pantalla: *"Nadie lo va a leer. Ni yo."* (romántico y sin base de datos).
+4. **"Ahora sopla 🕯️"**
+   - Con permiso de micrófono: la llama se inclina y tiembla según la fuerza del soplido; con un soplido fuerte se apaga.
+   - Si no da permiso o falla: deslizar el dedo hacia arriba sobre la llama (o tocarla) también la apaga.
+5. **Se apaga:** la llama se encoge, sale un hilo de humo que sube y se enrosca; 1 s de oscuridad y silencio.
+6. **El deseo viaja:** una chispa sale del pabilo humeante, se convierte en luciérnaga y sube al cielo
+   uniéndose a otras (eco del capítulo de Tlaxcala). Texto: **"Tu deseo está en camino ✨"**.
+7. **Celebración:** la música vuelve a subir; lluvia de **pétalos de girasol** + confeti dorado/coral
+   (no confeti genérico), destellos.
+8. Cierre: "Te quiero, boo." / "— Tu Pokie" · botón pequeño "ver otra vez".
+- **Luz:** oscuridad total → una vela → humo → explosión de luz cálida.
 
 ---
 
@@ -108,5 +119,13 @@ dentro de otra página de forma oculta). Opciones:
 1. **Recomendada:** comprarla en iTunes / Amazon Music (~$15–20 MXN) → te da el MP3/M4A → súbelo a la carpeta de Drive "09 JELLY".
 2. Si no, usamos un embed visible de Spotify/YouTube (pequeño reproductor), pero se ve menos limpio y ella necesita sesión iniciada para la canción completa.
 
-## Publicación
-Link privado (Vercel/Netlify gratis). Opcional: que solo se abra el día del cumpleaños.
+## Publicación + NFC
+- **Fecha límite:** cumpleaños 25 de noviembre de 2026 (24 años). Página lista y probada el 24.
+- **Hosting gratis que no caduca:** GitHub Pages (`erickddp.github.io/...`) o Vercel (`jelly-xxx.vercel.app`).
+  Ojo: GitHub Pages gratis requiere repo **público** (las fotos quedarían visibles en GitHub);
+  Vercel funciona con repo privado. Ninguno caduca mientras exista la cuenta.
+- **Etiqueta NFC:** NTAG213/215 (las más comunes). Grabar el link con la app *NFC Tools* (Android/iPhone),
+  registro tipo URL. Probar en su tipo de celular, y **solo después** bloquearla (lock) para que no se borre.
+  iPhone XS+ la lee sola; en Android debe tener NFC activado.
+  Recomendado: QR pequeñito escondido en la caja como respaldo.
+- La página detecta si es antes del 25 y muestra una cuenta regresiva (opcional).
