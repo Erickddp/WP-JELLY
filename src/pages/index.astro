@@ -1,0 +1,295 @@
+---
+import { Image } from 'astro:assets';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/400-italic.css';
+import '@fontsource/cormorant-garamond/500-italic.css';
+import '@fontsource-variable/caveat';
+import '../styles/global.css';
+
+import velita from '../assets/photos/04-cena-velita.jpg';
+import fuente from '../assets/photos/01-fuente-noche.jpg';
+import bosque from '../assets/photos/11-bosque-abrazo.jpg';
+import piedra from '../assets/photos/10-piedra-canteada.jpg';
+import metepecSelfie from '../assets/photos/08-metepec-selfie.jpg';
+import metepecLetrero from '../assets/photos/03-metepec-letrero.jpg';
+import espejo from '../assets/photos/06-espejo-talavera.jpg';
+import kayak from '../assets/photos/05-kayak-selfie.jpg';
+import amanecer from '../assets/photos/12-amanecer-kayak.jpg';
+import desayuno from '../assets/photos/07-desayuno-tazas.jpg';
+import banca from '../assets/photos/02-banca-lavanda.jpg';
+
+const w = [480, 800, 1200];
+const col = '(min-width: 600px) 520px, 92vw';
+
+// Girasol del collar: dos coronas de pétalos
+const petals = [
+  ...Array.from({ length: 14 }, (_, i) => ({ a: (360 / 14) * i, ring: 'outer' })),
+  ...Array.from({ length: 14 }, (_, i) => ({ a: (360 / 14) * i + 360 / 28, ring: 'inner' })),
+];
+
+// Flores del letrero de Metepec
+const flowers = [
+  { x: '-4%', y: '6%', c: '#ff5d8f', s: 1.1 },
+  { x: '82%', y: '3%', c: '#ffc83d', s: 0.8 },
+  { x: '88%', y: '46%', c: '#3fd0c9', s: 1 },
+  { x: '-6%', y: '58%', c: '#ff4a3d', s: 0.9 },
+  { x: '76%', y: '86%', c: '#ff5d8f', s: 0.7 },
+  { x: '8%', y: '90%', c: '#ffc83d', s: 1.05 },
+];
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#000000" />
+    <title>Para Jelly</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌻</text></svg>" />
+  </head>
+  <body class="locked">
+    <div id="sky"></div>
+    <div id="grain" aria-hidden="true"></div>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+
+    <audio id="song" src="/audio/cancion.mp3" preload="auto" loop></audio>
+    <button id="mute" aria-label="Silenciar música">♪</button>
+
+    <!-- 0. Entrada -->
+    <div id="gate">
+      <button id="start" aria-label="Toca para empezar">
+        <span class="spark" aria-hidden="true"></span>
+        <span class="gate-text">Para Jelly<small>toca para empezar</small></span>
+      </button>
+    </div>
+
+    <main>
+      <!-- 1. Portada -->
+      <section id="portada" data-sky="#1c0f08">
+        <div class="hero-photo">
+          <Image src={velita} alt="Jelly sonriendo junto a una velita, de noche" widths={w} sizes="100vw" loading="eager" />
+        </div>
+        <div class="shade"></div>
+        <div class="hero-text">
+          <h1 class="display"><span class="hl">Jelly.</span></h1>
+          <p class="sub hl">24 años.</p>
+          <p class="sub hl">Esto es para ti.</p>
+        </div>
+        <div class="scroll-hint hl" aria-hidden="true">desliza<i></i></div>
+      </section>
+
+      <!-- 2. El pretexto -->
+      <section id="pretexto" class="chapter" data-sky="#062a20">
+        <div class="glow" aria-hidden="true"></div>
+        <div class="inner">
+          <figure class="print r-photo" style="margin:0 0 3.5rem">
+            <Image src={fuente} alt="Los dos frente a la fuente iluminada de verde" widths={w} sizes={col} />
+          </figure>
+          <p class="line r-line">Ni nos gusta el futbol.</p>
+          <p class="line r-line">Pero apoyamos a México… y ese fue nuestro pretexto.</p>
+          <p class="line soft r-line">Esa noche fue mágica.</p>
+          <svg class="tiny-heart r-heart" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+        </div>
+      </section>
+
+      <!-- 3. Tlaxcala: el día se vuelve noche de luciérnagas -->
+      <section id="tlaxcala" data-sky="#0b0d24">
+        <div class="tl-sky"></div>
+        <div class="tl-dusk"></div>
+        <div class="tl-night"></div>
+        <div class="photos">
+          <figure class="print polaroid ph ph-a" style="margin:0">
+            <Image src={bosque} alt="Abrazados en el pasto del bosque" widths={[480, 800]} sizes="60vw" />
+            <span class="caption hand">Tlaxcala</span>
+            <span class="dim"></span>
+          </figure>
+          <figure class="print polaroid ph ph-b" style="margin:0">
+            <Image src={piedra} alt="Abrazados bajo la cabaña de Piedra Canteada" widths={[480, 800]} sizes="65vw" />
+            <span class="caption hand">Piedra Canteada</span>
+            <span class="dim"></span>
+          </figure>
+        </div>
+        <p class="line day-caption">Nuestra primera aventura.</p>
+        <canvas id="fireflies" aria-hidden="true"></canvas>
+        <div class="night-text">
+          <p class="line n1">Tlaxcala, luces en la oscuridad…</p>
+          <p class="line soft n2">Pero la que más brilla eres tú.</p>
+        </div>
+      </section>
+
+      <!-- 4. Metepec -->
+      <section id="metepec" class="chapter" data-sky="#1d2552">
+        <div class="flowers" aria-hidden="true">
+          {flowers.map((f) => (
+            <svg class="flower" viewBox="0 0 100 100" style={`left:${f.x};top:${f.y};--s:${f.s}`}>
+              {Array.from({ length: 6 }, (_, i) => (
+                <ellipse cx="50" cy="24" rx="13" ry="22" fill={f.c} transform={`rotate(${i * 60} 50 50)`} />
+              ))}
+              <circle cx="50" cy="50" r="13" fill="#fff4d6" />
+              <circle cx="50" cy="50" r="6" fill={f.c} />
+            </svg>
+          ))}
+        </div>
+        <div class="inner">
+          <div class="duo">
+            <figure class="print a" style="margin:0">
+              <Image src={metepecSelfie} alt="Selfie de los dos en Metepec" widths={[480, 800]} sizes="62vw" />
+            </figure>
+            <figure class="print b" style="margin:0">
+              <Image src={metepecLetrero} alt="Los dos frente al letrero de Metepec" widths={[400, 700]} sizes="44vw" />
+            </figure>
+          </div>
+          <p class="line r-line">Y ahí me di cuenta de que quería mil aventuras más contigo.</p>
+        </div>
+      </section>
+
+      <!-- 5. El kayak -->
+      <section id="espejo" class="chapter" data-sky="#0e0d24">
+        <div class="inner">
+          <figure class="print r-photo" style="margin:0">
+            <div style="position:relative">
+              <Image src={espejo} alt="Su reflejo en un espejo de talavera, con foquitos encendidos" widths={w} sizes={col} />
+              <span class="twinkle" style="left:41%;top:20%"></span>
+              <span class="twinkle" style="left:50.5%;top:21.5%;animation-delay:.7s"></span>
+              <span class="twinkle" style="left:65%;top:21.5%;animation-delay:1.3s"></span>
+              <span class="twinkle" style="left:57%;top:28%;animation-delay:1.9s"></span>
+            </div>
+          </figure>
+          <p class="note hand r-line">la noche antes del kayak</p>
+        </div>
+      </section>
+
+      <section id="selfie" class="chapter" data-sky="#3a3f5c">
+        <div class="inner">
+          <div class="r-photo">
+            <figure class="print rock" style="margin:0">
+              <Image src={kayak} alt="Selfie de los dos en el kayak" widths={w} sizes={col} />
+            </figure>
+          </div>
+          <p class="line r-line">Un kayak con poco control…</p>
+        </div>
+      </section>
+
+      <section id="amanecer" data-sky="#c98a3e">
+        <Image src={amanecer} alt="El amanecer desde el kayak, el sol sobre el agua" widths={w} sizes="100vw" />
+        <div class="shade"></div>
+        <div class="text">
+          <p class="line a1">…pero el amanecer fue nuestro,</p>
+          <p class="line soft a2">y el más bonito.</p>
+        </div>
+      </section>
+
+      <section id="desayuno" class="chapter" data-sky="#d9a45a">
+        <div class="inner">
+          <figure class="print r-photo" style="margin:0">
+            <div style="position:relative">
+              <Image src={desayuno} alt="Dos tazas de café brindando sobre la mesa del desayuno" widths={w} sizes={col} />
+              <span class="clink" style="left:56%;top:31%">
+                {Array.from({ length: 7 }, (_, i) => <span style={`transform:rotate(${i * (360 / 7)}deg) translateY(-14px)`}></span>)}
+              </span>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 6. Gracias -->
+      <section id="gracias" class="chapter" data-sky="#e7def3">
+        <div class="inner">
+          <figure class="print r-photo">
+            <Image src={banca} alt="Jelly sentada en una banca de madera junto a flores de lavanda" widths={w} sizes="(min-width: 600px) 400px, 72vw" />
+          </figure>
+          <p class="line r-line">Gracias por ser tan atenta, tan buena, tan cariñosa.</p>
+          <p class="line r-line">Gracias por <span class="thaw">descongelar</span> un corazón que ya no sentía.</p>
+          <p class="line r-line">Tú darías la vuelta al mundo por cuidarme…</p>
+          <p class="line last r-last">…y yo daría otra por ti.</p>
+        </div>
+      </section>
+
+      <!-- 7. El regalo -->
+      <section id="regalo" data-sky="#f3c46a">
+        <div class="stage">
+          <svg class="pendant" viewBox="0 0 200 200" aria-label="Un corazón de cristal con un girasol adentro">
+            <defs>
+              <radialGradient id="glass" cx="38%" cy="30%" r="80%">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".75" />
+                <stop offset=".45" stop-color="#fff6e6" stop-opacity=".35" />
+                <stop offset="1" stop-color="#e9d2b0" stop-opacity=".45" />
+              </radialGradient>
+              <radialGradient id="seed" cx="50%" cy="45%" r="60%">
+                <stop offset="0" stop-color="#5b3510" />
+                <stop offset=".7" stop-color="#2b1606" />
+                <stop offset="1" stop-color="#1b0d03" />
+              </radialGradient>
+              <linearGradient id="petal" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#e79a00" />
+                <stop offset=".6" stop-color="#ffc21a" />
+                <stop offset="1" stop-color="#ffd95a" />
+              </linearGradient>
+              <clipPath id="heartClip"><path d="M100 182 C 42 140, 8 104, 12 64 C 16 32, 46 18, 70 24 C 86 28, 96 40, 100 50 C 104 40, 114 28, 130 24 C 154 18, 184 32, 188 64 C 192 104, 158 140, 100 182 Z" /></clipPath>
+              <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" /></filter>
+            </defs>
+            <!-- cadena -->
+            <path class="chain" d="M100 30 C 70 10, 30 -20, -40 -110" fill="none" stroke="#8a8f98" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7" />
+            <path class="chain" d="M100 30 C 130 10, 170 -20, 240 -110" fill="none" stroke="#8a8f98" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="0.1 7" />
+            <rect x="92" y="26" width="16" height="22" rx="5" fill="#c9ccd2" stroke="#9aa0a8" stroke-width="1.2" />
+            <ellipse class="aura" cx="100" cy="108" rx="80" ry="70" fill="#fff3b0" opacity="0" filter="url(#soft)" />
+            <g clip-path="url(#heartClip)">
+              <rect x="0" y="0" width="200" height="200" fill="#fffaf0" opacity=".55" />
+              <g class="flower-g">
+                {petals.map((p) => (
+                  <g transform={`rotate(${p.a} 100 106)`}>
+                    <ellipse class={`petal ${p.ring}`} cx="100" cy={p.ring === 'outer' ? 72 : 80} rx={p.ring === 'outer' ? 7.5 : 6.5} ry={p.ring === 'outer' ? 18 : 14} fill="url(#petal)" />
+                  </g>
+                ))}
+                <circle class="seed" cx="100" cy="106" r="17" fill="url(#seed)" />
+              </g>
+            </g>
+            <path d="M100 182 C 42 140, 8 104, 12 64 C 16 32, 46 18, 70 24 C 86 28, 96 40, 100 50 C 104 40, 114 28, 130 24 C 154 18, 184 32, 188 64 C 192 104, 158 140, 100 182 Z" fill="url(#glass)" stroke="#ffffff" stroke-opacity=".9" stroke-width="2.2" />
+            <path d="M34 60 C 36 44, 50 36, 64 38" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8" />
+            <path class="shine" d="M150 70 l3 -9 l3 9 l9 3 l-9 3 l-3 9 l-3 -9 l-9 -3 z" fill="#fff" opacity="0" />
+          </svg>
+          <div>
+            <div class="quote">
+              <p class="line q">Que todo lo que llegue sea mejor de lo que buscas,</p>
+              <p class="line q">dure más de lo que esperas</p>
+              <p class="line soft q">y te haga más feliz de lo que pudiste imaginar.</p>
+            </div>
+            <p class="hands hand q">El que tienes en tus manos.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Final: la vela -->
+      <section id="final" data-sky="#050307">
+        <div class="halo"></div>
+        <canvas class="sky" id="wishsky" aria-hidden="true"></canvas>
+        <canvas class="candle" id="candle" aria-label="Una vela encendida"></canvas>
+        <div class="ui">
+          <div class="step on" id="s-wish">
+            <h2>Feliz cumpleaños, Jelly.</h2>
+            <p>Pide un deseo.</p>
+            <textarea id="wish" rows="2" maxlength="200" placeholder="Escríbelo aquí… o solo piénsalo" aria-label="Tu deseo"></textarea>
+            <p class="whisper">No se guarda en ningún lado. Nadie lo va a leer, ni yo.</p>
+            <button class="btn" id="b-wished">Ya lo pedí</button>
+          </div>
+          <div class="step" id="s-blow">
+            <h2>Ahora sopla la vela.</h2>
+            <button class="btn" id="b-mic">Soplar al micrófono</button>
+            <p class="hint" id="blow-hint">o desliza el dedo hacia arriba sobre la llama</p>
+          </div>
+          <div class="step" id="s-done">
+            <h2 class="d1">Tu deseo está en camino ✨</h2>
+            <p class="line soft d2" style="margin-top:1.4rem;color:#fff1dc">Te quiero, boo.</p>
+            <p class="sign hand d3">— Tu Pokie</p>
+            <button class="btn ghost d4" id="b-again">Ver otra vez</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      import '../scripts/main.ts';
+    </script>
+  </body>
+</html>

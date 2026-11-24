@@ -1,0 +1,276 @@
+@import "tailwindcss";
+
+/*
+  Concepto: "Todo lo que brilla".
+  Cada capítulo tiene su luz; el cielo (#sky) cambia de color con el scroll.
+*/
+:root {
+  --night: #0d0f26;      /* noche azul de Tlaxcala */
+  --ember: #1c0f08;      /* noche cálida de la velita */
+  --fountain: #062a20;   /* verde de la fuente */
+  --firefly: #e6ff8f;    /* luz de luciérnaga */
+  --flame: #ffb54d;      /* llama */
+  --sunflower: #f4b400;  /* girasol */
+  --dawn: #f6c26b;       /* amanecer */
+  --blush: #f2a3b3;      /* boo */
+  --metepec: #1d2552;    /* azul del letrero de Metepec */
+  --lavender: #e7def3;   /* lavanda de la banca */
+  --plum: #2b1736;       /* tinta sobre fondos claros */
+  --paper: #fbf6ee;      /* papel de foto */
+
+  --serif: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --hand: "Caveat Variable", "Caveat", cursive;
+}
+
+html { background: var(--ember); overflow-x: clip; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+body {
+  margin: 0;
+  background: transparent;
+  color: #fff7ea;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body.locked { overflow: hidden; height: 100svh; }
+
+#sky {
+  position: fixed; inset: 0; z-index: -2;
+  background-color: var(--ember);
+}
+#grain {
+  position: fixed; inset: 0; z-index: 50; pointer-events: none;
+  opacity: .07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- Tipografía ---------- */
+.display {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: .9;
+  letter-spacing: -0.02em;
+}
+.line {
+  font-size: clamp(1.9rem, 7.8vw, 2.9rem);
+  line-height: 1.12;
+  font-weight: 500;
+  text-wrap: balance;
+  margin: 0;
+}
+.line + .line { margin-top: .6em; }
+.line.soft { font-style: italic; font-weight: 400; }
+.hand {
+  font-family: var(--hand);
+  font-weight: 500;
+}
+
+/* ---------- Estructura ---------- */
+.chapter {
+  position: relative;
+  padding: 22svh 20px;
+}
+.chapter > .inner { max-width: 32rem; margin: 0 auto; }
+
+/* Foto como objeto físico: impresión con borde de papel */
+.print {
+  position: relative;
+  background: var(--paper);
+  padding: 8px;
+  border-radius: 3px;
+  box-shadow: 0 30px 50px -22px rgba(0,0,0,.65), 0 2px 6px rgba(0,0,0,.25);
+}
+.print img { display: block; width: 100%; height: auto; border-radius: 1px; }
+.print.polaroid { padding: 9px 9px 46px; }
+.print .caption {
+  position: absolute; left: 0; right: 0; bottom: 8px;
+  text-align: center; color: #3a2a2a; font-size: 1.5rem;
+}
+
+/* ---------- Entrada ---------- */
+#gate {
+  position: fixed; inset: 0; z-index: 60;
+  display: grid; place-items: center;
+  background: #000;
+}
+#start {
+  all: unset; cursor: pointer;
+  display: grid; justify-items: center; gap: 2.2rem;
+  padding: 3rem; text-align: center;
+}
+#start:focus-visible { outline: 2px solid var(--flame); outline-offset: 6px; border-radius: 12px; }
+.spark {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #fff3d6;
+  box-shadow: 0 0 12px 4px rgba(255,190,90,.9), 0 0 60px 18px rgba(255,150,40,.45);
+  animation: breathe 2.6s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,100% { transform: scale(.8); opacity: .75; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+.gate-text { font-size: 1.9rem; font-style: italic; color: #fff2dc; }
+.gate-text small { display: block; margin-top: .4rem; font-size: 1rem; font-style: normal; letter-spacing: .02em; color: rgba(255,240,220,.55); }
+
+/* ---------- Portada ---------- */
+#portada { position: relative; height: 100svh; overflow: hidden; }
+#portada .hero-photo { position: absolute; inset: 0; clip-path: circle(0% at 78% 92%); }
+#portada .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
+#portada .shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(20,10,4,.82) 0%, rgba(20,10,4,.35) 38%, rgba(20,10,4,0) 60%, rgba(20,10,4,.35) 100%);
+}
+#portada .hero-text { position: absolute; left: 22px; right: 22px; top: 9svh; }
+#portada h1 { font-size: clamp(5.5rem, 30vw, 11rem); margin: 0; color: #fff4e2; }
+#portada .sub { font-size: clamp(2rem, 8.4vw, 2.8rem); margin: .35em 0 0; font-style: italic; color: #ffe6c4; }
+.scroll-hint {
+  position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%);
+  font-family: var(--hand); font-size: 1.4rem; color: rgba(255,240,220,.8);
+  display: grid; justify-items: center; gap: 4px;
+}
+.scroll-hint i { width: 1px; height: 28px; background: currentColor; animation: drip 1.8s ease-in-out infinite; transform-origin: top; }
+@keyframes drip { 0% { transform: scaleY(0); opacity: 1 } 70% { transform: scaleY(1); opacity: 1 } 100% { transform: scaleY(1); opacity: 0 } }
+
+/* ---------- El pretexto ---------- */
+.glow {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  filter: blur(40px);
+}
+#pretexto { overflow: clip; }
+#pretexto .glow { inset: 8% -20% auto; height: 70vw; max-height: 520px; background: radial-gradient(circle, rgba(47,211,138,.55), rgba(47,211,138,0) 65%); }
+#pretexto .print { transform: rotate(-2deg); margin-bottom: 3.5rem; }
+.tiny-heart { width: 28px; height: 28px; color: var(--blush); margin-top: 1.8rem; }
+
+/* ---------- Tlaxcala ---------- */
+#tlaxcala { position: relative; height: 100svh; overflow: hidden; }
+#tlaxcala .tl-sky { position: absolute; inset: 0; background: linear-gradient(180deg, #8fc6e8 0%, #cfe7d8 70%, #a9cf8f 100%); }
+#tlaxcala .tl-dusk { position: absolute; inset: 0; opacity: 0; background: linear-gradient(180deg, #3b3f7a 0%, #c26f74 55%, #f2a66b 100%); }
+#tlaxcala .tl-night { position: absolute; inset: 0; opacity: 0; background: radial-gradient(120% 80% at 50% 0%, #1b2150 0%, #0b0d24 60%, #06071a 100%); }
+#tlaxcala canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+#tlaxcala .photos { position: absolute; inset: 0; }
+#tlaxcala .ph { position: absolute; width: min(58vw, 290px); }
+#tlaxcala .ph-a { left: 6vw; top: 16svh; }
+#tlaxcala .ph-b { right: 5vw; top: 42svh; width: min(64vw, 330px); }
+#tlaxcala .ph .dim { position: absolute; inset: 0; background: #070820; opacity: 0; border-radius: 3px; }
+#tlaxcala .day-caption { position: absolute; left: 22px; right: 22px; bottom: 9svh; color: #1f2b20; }
+#tlaxcala .night-text { position: absolute; left: 22px; right: 22px; bottom: 12svh; max-width: 32rem; margin: 0 auto; }
+
+/* ---------- Metepec ---------- */
+#metepec { overflow: hidden; }
+#metepec .flowers { position: absolute; inset: 0; pointer-events: none; }
+#metepec .flower { position: absolute; width: 74px; height: 74px; }
+#metepec .duo { position: relative; height: 128vw; max-height: 640px; margin-bottom: 3rem; }
+#metepec .duo .print { position: absolute; }
+#metepec .duo .a { width: 62%; left: 0; top: 0; transform: rotate(-4deg); }
+#metepec .duo .b { width: 44%; right: 0; top: 18%; transform: rotate(5deg); }
+
+/* ---------- Kayak ---------- */
+.twinkle {
+  position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%;
+  background: radial-gradient(circle, #fffbe8 0%, rgba(255,226,150,.9) 25%, rgba(255,200,90,0) 70%);
+  mix-blend-mode: screen;
+  animation: twinkle 2.4s ease-in-out infinite;
+}
+@keyframes twinkle { 0%,100% { transform: scale(.6); opacity: .5 } 50% { transform: scale(1.5); opacity: 1 } }
+#espejo .print { transform: rotate(1.5deg); }
+#espejo .note { margin-top: 1.4rem; font-size: 1.7rem; color: rgba(255,236,200,.85); }
+
+#selfie .print { transform-origin: 50% 90%; }
+.rock { animation: rock 4.5s ease-in-out infinite; }
+@keyframes rock { 0%,100% { transform: rotate(-2.2deg) translateY(0) } 50% { transform: rotate(2deg) translateY(-6px) } }
+#selfie .line { margin-top: 3rem; }
+
+#amanecer { position: relative; height: 100svh; overflow: hidden; }
+#amanecer img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 55%; }
+#amanecer .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(40,25,10,.55) 0%, rgba(40,25,10,0) 40%); }
+#amanecer .text { position: absolute; left: 22px; right: 22px; top: 11svh; color: #fff7e6; text-shadow: 0 2px 24px rgba(60,30,0,.5); }
+
+#desayuno .print { transform: rotate(-1.5deg); }
+.clink { position: absolute; width: 60px; height: 60px; margin: -30px 0 0 -30px; pointer-events: none; }
+.clink span {
+  position: absolute; left: 50%; top: 50%; width: 3px; height: 16px; margin-left: -1.5px; border-radius: 3px;
+  background: #fff6c8; box-shadow: 0 0 8px #ffd76a; transform-origin: 50% 100%;
+  opacity: 0;
+}
+
+/* ---------- Gracias ---------- */
+#gracias { color: var(--plum); }
+#gracias .print { width: 78%; margin: 0 0 3.5rem auto; transform: rotate(2deg); }
+#gracias .line { font-size: clamp(1.55rem, 6.2vw, 2.4rem); }
+#gracias .thaw { color: #6aa6de; }
+#gracias .last { margin-top: 2.2em; font-style: italic; font-size: clamp(2rem, 8.5vw, 3.2rem); }
+
+/* ---------- Regalo ---------- */
+#regalo { position: relative; height: 100svh; overflow: hidden; color: #3a2208; }
+#regalo .stage { position: absolute; inset: 0; display: grid; grid-template-rows: 1fr auto; padding: 6svh 22px 7svh; }
+#regalo svg.pendant { width: min(70vw, 340px); height: auto; justify-self: center; align-self: center; overflow: visible; }
+#regalo .quote { max-width: 30rem; margin: 0 auto; text-align: center; }
+#regalo .quote .line { font-size: clamp(1.6rem, 6.6vw, 2.4rem); }
+#regalo .quote .line + .line { margin-top: .15em; }
+#regalo .hands { text-align: center; margin-top: 1.2rem; font-size: 1.6rem; color: #6b3f0e; }
+
+/* ---------- Final ---------- */
+#final { position: relative; min-height: 100svh; overflow: hidden; background: #050307; }
+#final .halo {
+  position: absolute; left: 50%; top: 30svh; width: 160vmax; height: 160vmax; margin: -80vmax 0 0 -80vmax;
+  background: radial-gradient(circle, rgba(255,170,70,.30) 0%, rgba(255,140,40,.10) 18%, rgba(0,0,0,0) 40%);
+  pointer-events: none; opacity: var(--lit, 1);
+}
+#final { display: flex; flex-direction: column; }
+#final canvas.candle { position: relative; z-index: 1; display: block; width: 100%; height: 40svh; min-height: 250px; margin-top: 3svh; touch-action: none; }
+#final canvas.sky { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+#final .ui { position: relative; z-index: 2; flex: 1; padding: 3svh 22px 8svh; text-align: center; }
+#final .step { display: none; max-width: 28rem; margin: 0 auto; }
+#final .step.on { display: block; }
+#final h2 { font-size: clamp(2.3rem, 10vw, 3.6rem); font-weight: 500; margin: 0 0 .2em; line-height: 1; color: #fff1dc; }
+#final p { margin: .3em 0; color: rgba(255,240,220,.85); }
+#final .whisper { font-style: italic; font-size: 1.05rem; color: rgba(255,240,220,.5); margin-top: .8rem; }
+#wish {
+  width: 100%; box-sizing: border-box; margin-top: 1.2rem; resize: none;
+  font: italic 1.35rem/1.35 var(--serif); color: #fff3df;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,220,170,.22); border-radius: 14px;
+  padding: .8rem 1rem; outline: none;
+}
+#wish:focus { border-color: rgba(255,200,120,.6); }
+#wish::placeholder { color: rgba(255,235,210,.4); }
+.btn {
+  all: unset; box-sizing: border-box; cursor: pointer; display: inline-block; margin-top: 1.3rem;
+  padding: .75rem 1.6rem; border-radius: 999px;
+  font: 500 1.3rem var(--serif); color: #2a1404;
+  background: linear-gradient(180deg, #ffd38a, #ffae4a);
+  box-shadow: 0 8px 30px -6px rgba(255,160,60,.55);
+  transition: transform .15s ease-out;
+}
+.btn:active { transform: scale(.97); }
+.btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.btn.ghost { background: none; color: rgba(255,235,210,.75); box-shadow: none; border: 1px solid rgba(255,220,170,.3); font-size: 1.1rem; }
+.hint { font-size: 1rem; color: rgba(255,235,210,.55); margin-top: 1rem !important; }
+#final .d1 { font-size: clamp(1.8rem, 7.6vw, 2.6rem); }
+#final .d2 { font-size: clamp(2.8rem, 13vw, 4.2rem) !important; line-height: 1; text-shadow: 0 0 30px rgba(255,170,80,.45); }
+#final .sign { font-size: 2.3rem; color: var(--blush); margin-top: .4rem; }
+.wish-fly { position: fixed; z-index: 5; pointer-events: none; font: italic 1.35rem var(--serif); color: #fff3df; white-space: pre-wrap; text-align: center; }
+
+/* ---------- Música ---------- */
+#mute {
+  all: unset; position: fixed; right: 14px; bottom: 14px; z-index: 40; cursor: pointer;
+  width: 42px; height: 42px; border-radius: 50%; display: none; place-items: center;
+  background: rgba(20,12,8,.45); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  color: #ffe9cc; font-size: 18px;
+}
+#mute.show { display: grid; }
+#mute:focus-visible { outline: 2px solid var(--flame); }
+
+#confetti { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 45; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rock, .twinkle, .spark, .scroll-hint i { animation: none !important; }
+}
+
+@media (min-width: 768px) {
+  #tlaxcala .ph-a { left: 18vw; }
+  #tlaxcala .ph-b { right: 18vw; top: 34svh; }
+  #metepec .duo { height: 560px; }
+}
