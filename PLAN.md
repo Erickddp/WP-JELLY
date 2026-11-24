@@ -13,27 +13,22 @@
 - `ui-ux-pro-max` → paletas, pares tipográficos, presets GSAP, reglas de UX/accesibilidad.
 - Pendientes (no se pudieron verificar aún): Taste Skill, Emil Kowalski (animaciones).
 
-## 3. Las 12 fotos (revisadas) y orden propuesto
-Hilo narrativo: **"un año/viaje juntos → lo que me enseñaste → feliz cumpleaños, te quiero"**.
-Solo usaría **9–10**; marco cuáles son las más fuertes.
+## 3. Historia y orden (v2, con lo que contaste) — cronológico
+Jenyfer, "Jelly" / "boo" · 24 años · ~6 meses juntos, todo en este año.
 
-| # | Archivo | Qué se ve | Rol en la historia | Animación propuesta |
-|---|---|---|---|---|
-| 1 ⭐ | `04-cena-velita` | Jelly sonriendo de noche, velita, focos, tiendas azules | **Portada / apertura**: la vela = cumpleaños | Fade lento desde negro; la llama de la vela "enciende" la página |
-| 2 | `02-banca-lavanda` | Jelly en banca de madera, paz ✌️, lavanda | "Así de tú eres: luz y paz" | Foto se revela con máscara que sube; texto a la izquierda |
-| 3 ⭐ | `08-metepec-selfie` + `03-metepec-letrero` | Selfie en Metepec / los dos frente al letrero | "Donde empezamos a salir de aventura" | Parallax entre las dos, polaroid que cae |
-| 4 | `01-fuente-noche` | Selfie bajo la fuente verde, lluvia | "Contigo hasta la lluvia es bonita" | Gotas sutiles + brillo verde de fondo |
-| 5 ⭐ | `12-amanecer-kayak` | Amanecer en el agua, remo | Pausa emocional — **solo imagen, poco texto** | Pantalla completa, zoom lento (Ken Burns) |
-| 6 | `05-kayak-selfie` | Selfie en kayak, chaleco rosa | "Contigo me atrevo a todo" | Slide con ligera inclinación |
-| 7 | `07-desayuno-tazas` | Chilaquiles, tazas "Casa del Sol" | "Hasta lo simple contigo sabe mejor" | Tazas que "brindan" (se acercan al hacer scroll) |
-| 8 ⭐ | `06-espejo-talavera` | Espejo de talavera, beso, luces | Momento romántico central | Marco de talavera que se dibuja; confeti de luces |
-| 9 | `11-bosque-abrazo` | Abrazo en el pasto, ella con beso | "Mi lugar favorito es abrazándote" | Foto con corazón/respiración suave |
-| 10 | `10-piedra-canteada` | Abrazo bajo cabaña, bosque | Cierre antes del mensaje final | Foto pequeña dentro de paisaje grande |
-| 11 | `09-jerseys-guino` | Jerseys, lengua, guiño | Toque divertido (¿antes del final?) | Aparece con "pop" y rebote |
-| Final | — | Pantalla oscura + vela | **Mensaje de "te quiero" + botón "sopla la vela"** | Confeti + corazones al soplar |
+| Capítulo | Fotos | Idea | Animación |
+|---|---|---|---|
+| **Portada** | `04-cena-velita` | Jelly sonriendo con la velita. "Jelly, 24." | Negro → la llama "enciende" la página |
+| **1. El pretexto** | `01-fuente-noche` (+ `09-jerseys-guino` si es del mismo día) | Partido que no les gustaba, apoyaron a México, pretexto para salir = **primer beso**, fuente verde detrás | Brillo verde de fondo, la foto "sube" del agua; corazón pequeño aparece al final |
+| **2. Metepec** | `08-metepec-selfie`, `03-metepec-letrero` | Primera aventura juntos | Polaroids que caen y se acomodan |
+| **3. El kayak** | `05-kayak-selfie`, `12-amanecer-kayak`, `07-desayuno-tazas` | Un solo kayak, chocaron, desastre jaja — y el amanecer más bonito | Selfie con balanceo; amanecer a pantalla completa con zoom lento; tazas que brindan |
+| **4. Luciérnagas (Tlaxcala)** | `06-espejo-talavera`, `10-piedra-canteada`, `11-bosque-abrazo` | La noche de luces; texto con puntitos de luz que parpadean | Fondo con luciérnagas animadas (canvas ligero) |
+| **5. Gracias** | `02-banca-lavanda` | Agradecimiento (sin más fotos, el texto manda) | Texto aparece frase por frase |
+| **6. El regalo** | Dibujo SVG de corazón + girasol | Frase del regalo | Girasol que florece al hacer scroll |
+| **Final** | Oscuro + vela | "Te quiero" + botón **sopla la vela** | Confeti cálido + corazones |
 
-Descartaría o dejaría opcionales: la que está más borrosa (`01-fuente-noche` si prefieres menos fotos) y `08`/`03` (puede quedar solo una).
-**Tú decides** cuáles quitar/dejar y el orden.
+Son 11 fotos; si quieres menos, quitaría `09` y `03`.
+Nota: la captura de MercadoLibre (`regalo.jpg`) **no** se usa tal cual (trae carrito/menús y arruina la sorpresa); recreamos el corazón con girasol en SVG.
 
 ## 4. Dirección visual (propuesta, lo afinamos)
 - Ambiente: **noche cálida de luces de feria** (como la foto de la velita y el espejo), no rosa cursi genérico.
@@ -50,3 +45,15 @@ Descartaría o dejaría opcionales: la que está más borrosa (`01-fuente-noche`
 6. ¿Frase final exacta de "te quiero"? (la escribimos juntos)
 7. ¿Música? ¿Canción que sea de ustedes?
 8. ¿Dónde la publicamos? (link privado con contraseña/fecha de apertura sorpresa)
+
+## 6. Borrador de textos (para editar juntos)
+**Portada:** "Jelly. 24 años. Esto es para ti."
+**1. El pretexto:** "Ni nos gusta el futbol. Pero apoyamos a México… y ese fue nuestro pretexto. Esa noche, frente a una fuente verde, fue nuestro primer beso."
+**2. Metepec:** "Y así empezó todo: contigo, salir a cualquier lado se volvió aventura."
+**3. El kayak:** "Un kayak para los dos. Chocamos, no nos poníamos de acuerdo, fue un desastre. Y aun así, el amanecer más bonito fue contigo."
+**4. Luciérnagas:** "Tlaxcala, luces en la oscuridad… Pero la que más brilla eres tú."
+**5. Gracias:** "Gracias por ser tan atenta, tan buena, tan cariñosa. Gracias por descongelar un corazón que ya no sentía. Sé que darías la vuelta al mundo por cuidarme, y yo daría otra por ti."
+**6. El regalo:** "Que todo lo que llegue sea mejor de lo que buscas, dure más de lo que esperas y te haga más feliz de lo que pudiste imaginar."
+**Final:** "Feliz cumpleaños, Jelly. Te quiero, boo." + "Pide un deseo y sopla la vela."
+
+Música propuesta: *You Are the Reason* — Calum Scott.
